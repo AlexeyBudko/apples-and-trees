@@ -30,6 +30,16 @@ namespace Apples_and_trees
             numOfApples += grownApples;
             return grownApples;
         }
+
+        public int Shake()
+        {
+            Random rand = new Random();
+            int shakenApples = rand.Next(100500);
+            while (shakenApples > this.numOfApples)
+                shakenApples = rand.Next(100500);
+            return shakenApples;
+        }
+
     }
 
     class Apple
