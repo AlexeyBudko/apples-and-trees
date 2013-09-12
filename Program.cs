@@ -55,6 +55,27 @@ namespace Apples_and_trees
     {
         static void Main(string[] args)
         {
+            Tree appleTree = new Tree();
+            char operation;
+
+            do
+            {
+                Console.WriteLine("Enter 'g' for growing apples and 'f' - for finish");
+                operation = Convert.ToChar(Console.ReadLine());
+                switch (operation)
+                {
+                    case 'g':
+                        int numOfGrownApples = appleTree.Grow();
+                        Console.WriteLine("Was grown " + numOfGrownApples + " apples.");
+                        break;
+                    case 'f':
+                        break;
+                    default:
+                        Console.WriteLine("Wrong key!");
+                        break;
+
+                }
+            } while (operation != 'f');
         }
     }
 }
