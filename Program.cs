@@ -37,6 +37,7 @@ namespace Apples_and_trees
             int shakenApples = rand.Next(100500);
             while (shakenApples > this.numOfApples)
                 shakenApples = rand.Next(100500);
+            numOfApples -= shakenApples;
             return shakenApples;
         }
 
@@ -60,13 +61,17 @@ namespace Apples_and_trees
 
             do
             {
-                Console.WriteLine("Enter 'g' for growing apples and 'f' - for finish");
+                Console.WriteLine("Enter 'g' for growing apples, 'f' - for finish and 's' - for shake");
                 operation = Convert.ToChar(Console.ReadLine());
                 switch (operation)
                 {
                     case 'g':
                         int numOfGrownApples = appleTree.Grow();
                         Console.WriteLine("Was grown " + numOfGrownApples + " apples.");
+                        break;
+                    case 's':
+                        int numOfShakenApples = appleTree.Shake();
+                        Console.WriteLine("Was shaken " + numOfShakenApples + " apples.");
                         break;
                     case 'f':
                         break;
