@@ -5,50 +5,54 @@ using System.Text;
 
 namespace Apples_and_trees
 {
+    class Apple
+    {
+        int numOfPips;
+
+        public int getNumOfPips()
+        {
+            return this.numOfPips;
+        }
+
+        public Apple()
+        {
+            Random rand = new Random();
+            this.numOfPips = rand.Next(20);
+        }
+    }
+
     class Tree
     {
+        private List<Apple> apples;
+
         public Tree()
         {
-            numOfApples = 0;
-        }
-
-        public Tree(int amountOaApples)
-        {
-            numOfApples = amountOaApples;
-        }
-
-        private int numOfApples
-        {
-            set;
-            get;
+            this.apples=new List<Apple>();
         }
 
         public int Grow()
         {
             Random rand = new Random();
-            int grownApples = rand.Next(100500);
-            numOfApples += grownApples;
+            int grownApples = rand.Next(100);
+            for (int i = 0; i < grownApples; i++)
+                apples.Add(new Apple());
             return grownApples;
         }
 
         public int Shake()
         {
             Random rand = new Random();
-            int shakenApples = rand.Next(100500);
-            while (shakenApples > this.numOfApples)
-                shakenApples = rand.Next(100500);
-            numOfApples -= shakenApples;
+            int shakenApples = rand.Next(this.apples.Capacity);
+            apples.RemoveRange(0, shakenApples);
             return shakenApples;
         }
 
-    }
-
-    class Apple
-    {
-        int numOfPips
+        public int CountAllPips()
         {
-            set;
-            get;
+            int numOfPips = 0;
+            foreach (Apple apple in this.apples)
+                numOfPips += apple.getNumOfPips();
+            return numOfPips;
         }
     }
 
@@ -78,7 +82,6 @@ namespace Apples_and_trees
                     default:
                         Console.WriteLine("Wrong key!");
                         break;
-
                 }
             } while (operation != 'f');
         }
