@@ -45,10 +45,6 @@ namespace Apples_and_trees
         public int Grow()
         {
             int grownApples = this.numOfBlossomedApples;
-
-            if (grownApples == 0)
-                throw new AggregateException("Apples on a tree can't grow, before it hasn't blossomed!!");
-
             for (int i = 0; i < grownApples; i++)
                 this.apples.Add(new Apple());
             return grownApples;
@@ -90,7 +86,7 @@ namespace Apples_and_trees
         {
             Tree appleTree = new Tree();
 
-            //appleTree.Blossom();
+            appleTree.Blossom();
 
             char operation;
 
